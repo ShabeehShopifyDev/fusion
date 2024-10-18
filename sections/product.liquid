@@ -1,5 +1,32 @@
-<h1>Hi i am product section</h1>
-
+ <div class="product_section">
+    {%  form 'product',product %}  
+      <input type="hidden" id="product-id" value="{{ product.selected_or_first_available_variant.id }}" >
+      <div class="product">
+        <div class="product_image">
+          <img src="{{ product.featured_image |  product_img_url:'master' }}" >
+        </div>
+        <div class="product-info">
+          <h2 class="title">
+            {{ product.title }}
+          </h2>
+          <p class="price">
+            {{ product.price | money }}
+          </p>
+          <input type="number" id="quantity" min="1" disabled >
+        </div>
+        <button type="submit" >Add to cart</button>
+    </div>
+    {% endform %}
+</div>
+<script>
+  submitButton = document.querySelectorAll('form[action="/cart/add"]');
+  variant = 
+  submitButton.forEach((submit)=>{
+     async function productAdd(){
+      await fetch("/cart/add.js")
+     }
+  });
+</script>
 {% schema %}
   {
     "name": "Section name",
