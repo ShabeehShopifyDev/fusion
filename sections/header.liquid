@@ -8,8 +8,18 @@
 {% endstyle %}
 <div class="header_wrapper">
   <div class="header">
-    <a href="{{ shop.url }}">
+    <nav class="navigations">
+      <ul>
+        {% assign links = linklists[section.settings.link_list].links %}
+        {% for link in links %}
+          <li>
+            <a href="{{ link.url }}">{{ link.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
       <div class="logo">
+        <a href="{{ shop.url }}">
         {% if section.settings.logo != blank %}
           <img src="{{ section.settings.logo |  img_url:'master' }}" alt="main-logo" class="main-logo">
         {% elsif settings.logo != blank %}
@@ -17,8 +27,8 @@
         {% else %}
           <h1>{{ shop.name }}</h1>
         {% endif %}
+        </a>
       </div>
-    </a>
     <div class="icon-menue">
       <a href="#" class="fav-icon">
         {% render 'icon' , name: 'fav' %}
@@ -36,16 +46,7 @@
         {% render 'icon' , name: 'cart' %}
       </a>
     </div>
-    <nav class="navigations">
-      <ul>
-        {% assign links = linklists[section.settings.link_list].links %}
-        {% for link in links %}
-          <li>
-            <a href="{{ link.url }}">{{ link.title }}</a>
-          </li>
-        {% endfor %}
-      </ul>
-    </nav>
+  
   </div>
 </div>
 {% schema %}

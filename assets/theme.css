@@ -3,6 +3,7 @@ h2 {
 }
 img {
   width: 100%;
+  max-width: 250px;
 }
 #shopify-section-header .header-main .icon-menue {
   align-self: flex-end;
@@ -15,6 +16,51 @@ img {
 }
 
 .header-main a {
+  text-decoration: none;
+  color: initial;
+}
+.header_wrapper .header {
+  display: flex;
+  justify-content: space-around;
+}
+
+.header .icon-menue {
+  flex: 0 0 33.333%;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.header .navigations {
+  flex: 0 0 33%;
+  align-items: center;
+  display: flex;
+
+}
+.header .navigations ul{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.header_wrapper {
+  background: #fff;
+  box-shadow: 0px 15px 20px 1px #0000001f;
+  position: sticky;
+  top: 1;
+  left: 1;
+  z-index: 99;
+  padding: 0 30px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav.navigations a {
   text-decoration: none;
   color: initial;
 }
