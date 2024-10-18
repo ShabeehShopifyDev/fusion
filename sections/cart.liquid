@@ -1,15 +1,23 @@
 <div class="drawer">
-    <div class="wrapper">
-      <h2>Your Cart IS <span>{{cart.item_count}}</span></h2>
-      {% form 'cart',cart %}  
-        {% for item in cart.items %} 
-            <div class="cart_item">
-                <img src="{{ item.image | product_img_url:'master' }}">
-                <h3>{{item.title}}</h3>
-                <p>{{item.price}}</p>
-            </div> 
-        {% endfor %} 
-        <button type="submit">Checkout</button>
-     {% endform %}
-    </div>
+  <div class="wrapper">
+    <h2>Your Cart IS <span>{{ cart.item_count }}</span></h2>
+    {% form 'cart', cart %}
+      {% for item in cart.items %}
+        <div class="cart_item">
+          <img src="{{ item.image | img_url: 'master' }}">
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.price | money }}</p>
+        </div>
+      {% endfor %}
+      <button type="submit" id="checkoutButton">Checkout</button>
+    {% endform %}
+  </div>
 </div>
+
+<script>
+  document.getElementById('checkoutButton').addEventListener('click', function(e) {
+    e.preventDefault();
+    document.querySelector('form').submit();
+    window.location.href = '/checkout';
+  });
+</script>
