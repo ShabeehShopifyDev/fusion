@@ -1,0 +1,14 @@
+<div class="drawer">
+    <div class="wrapper">
+      <h2>Your Cart IS <span>{{cart.item_count}}</span></h2>
+      {% form 'cart',cart %}  
+        {% for item in cart.items %} 
+            <div class="cart_item">
+                <img src="{{ item.image |  image_url: 'master' }}" >
+                <h3>{{item.title}}</h3>
+                <p>{{item.price}}</p>
+            </div> 
+        {% endfor %} 
+     {% endform %}
+    </div>
+</div>

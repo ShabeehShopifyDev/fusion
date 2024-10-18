@@ -1,1 +1,16 @@
-{"sections":{"main":{"type":"product","settings":{}},"collection_DbptYG":{"type":"collection","settings":{}}},"order":["main","collection_DbptYG"]}
+{
+    "sections": {
+        "main": {
+            "type": "product",
+            "settings": {}
+        },
+        "collection_DbptYG": {
+            "type": "collection",
+            "settings": {}
+        }
+    },
+    "order": [
+        "main",
+        "collection_DbptYG"
+    ]
+}
