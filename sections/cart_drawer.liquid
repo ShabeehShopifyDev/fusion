@@ -4,7 +4,12 @@
       {% form 'cart',cart %}  
         {% for item in cart.items %} 
             <div class="cart_item">
-                <img src="{{ item.image |  image_url: 'master' }}" >
+                <img src="{{ item.image | product_img_url:'master' }}">
+                <p class="hi">hi</p>
+                <p class="hi">hi</p>
+                <p class="hi">hi</p>
+                <p class="hi">hi</p>
+                <p class="hi">hi</p>
                 <h3>{{item.title}}</h3>
                 <p>{{item.price}}</p>
             </div> 
