@@ -1,0 +1,84 @@
+{% style %}
+  .header_wrapper .header{
+    background:{{settings.header-background-color}};
+  }
+  .header_wrapper .header .logo{
+    max-width:{{section.settings.logo-width}}px;
+  }
+{% endstyle %}
+<div class="header_wrapper">
+  <div class="header">
+    <a href="{{ shop.url }}">
+      <div class="logo">
+        {% if section.settings.logo != blank %}
+          <img src="{{ section.settings.logo |  img_url:'master' }}" alt="main-logo" class="main-logo">
+        {% elsif settings.logo != blank %}
+          <img src="{{ settings.logo |  img_url:'master' }}" alt="main-logo" class="main-logo">
+        {% else %}
+          <h1>{{ shop.name }}</h1>
+        {% endif %}
+      </div>
+    </a>
+    <div class="icon-menue">
+      <a href="#" class="fav-icon">
+        {% render 'icon' , name: 'fav' %}
+      </a>
+      <a href="#" class="search-icon">
+        {% render 'icon' , name: 'search' %}
+      </a>
+      <a href="/account/login" class="header__link action-area__link">
+       {% render 'icon' , name: 'account' %}
+      </a>
+      <a href="/cart" class="cart-icon">
+        <span class="cart-count">
+          {{ cart.item_count }}
+        </span>
+        {% render 'icon' , name: 'cart' %}
+      </a>
+    </div>
+    <nav class="navigations">
+      <ul>
+        {% assign links = linklists[section.settings.link_list].links %}
+        {% for link in links %}
+          <li>
+            <a href="{{ link.url }}">{{ link.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+</div>
+{% schema %}
+{
+ "name": "header",
+ "class": "header",
+ "settings": [
+   {
+     "type": "header",
+     "content": "Logo"
+   },
+   {
+     "type": "image_picker",
+     "id":"logo",
+     "label": "Logo"
+   },
+   {
+    "type": "number",
+    "id": "logo-width",
+     "default":250,
+    "label": "Logo Size"
+  },
+  {
+    "type": "link_list",
+    "id": "link_list",
+    "label": "Link List",
+    "default": "main-menu"
+  }
+ ],
+ "presets": [
+   {
+       "name": "Header"
+   }
+ ]
+}
+{% endschema %}
