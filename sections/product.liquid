@@ -44,18 +44,6 @@ document.querySelectorAll(".quantity-minus").forEach((minus) => {
     }
   });
 });
-
-submitButton = document.querySelectorAll('form[action="/cart/add"]');
-  variant = 
-  submitButton.forEach((submit)=>{
-     async function productAdd(){
-      await fetch("/cart/add.js")
-     }
-  });
-
-
-
-
 </script>
 {% schema %}
   {
@@ -63,7 +51,7 @@ submitButton = document.querySelectorAll('form[action="/cart/add"]');
     "settings": [],
     "presets": [
       {
-        "name": "Product",
+        "name": "Product"
       }
     ]
   }
