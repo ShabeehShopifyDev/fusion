@@ -4,10 +4,14 @@
     {% for product in collection.products %}
       <div class="product">
         <div class="prodct-img">
-          <img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.title }}">
+          <a href="{{ product.url }}">
+           <img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.title }}">
+          </a>
         </div>
         <div class="product-info">
-          <h3>{{ product.title }}</h3>
+          <a href="{{ product.url }}">
+            <h3>{{ product.title }}</h3>
+          </a>
           <p>{{ product.price | money }}</p>
         </div>
         {% form 'product', product %}

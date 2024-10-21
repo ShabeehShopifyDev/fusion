@@ -1,10 +1,20 @@
 h2 {
   font-size: 30px;
 }
+a{
+  text-decoration: none;
+  color: initial;
+}
 img {
   width: 100%;
-  max-width: 250px;
 }
+.container{
+  width: 100%;
+  max-width: 1280px;
+  padding: 0 10px;
+  margin: 0 auto;
+}
+
 #shopify-section-header .header-main .icon-menue {
   align-self: flex-end;
   position: absolute;
@@ -64,3 +74,58 @@ nav.navigations a {
   text-decoration: none;
   color: initial;
 }
+
+.cart_item {
+  display: flex;
+  flex-wrap: wrap;
+  border: .5px solid #000000b0;
+  margin: 10px 0;
+  border-radius: 10px;
+}
+
+.cart_item .image {
+  max-width: 140px;
+}
+.cart_item .image img{
+  border-radius: 10px;
+}
+
+.cart_item .info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+.cart_info-n-checkout {
+    border: 1px solid #000;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 50%;
+    border-radius: 7px;
+}
+
+.cart_info-n-checkout .cart-info p {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.cart_info-n-checkout #checkoutButton {
+    background: #000;
+    color: #fff;
+    padding: 8px;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.product {
+  width: 700px;
+}
+
+
+
+
