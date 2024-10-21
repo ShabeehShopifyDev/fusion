@@ -1,1 +1,27 @@
-{"current":{"header-background-color":"linear-gradient(74deg, rgba(255, 154, 98, 1) 52%, rgba(255, 204, 75, 1) 67%)","sections":{"header":{"type":"header","settings":{"logo":"shopify:\/\/shop_images\/DRESS-TO-KILL-LOGO-05_1600x_59ec7225-cac3-4cfb-8173-736effe71f5f.jpg","logo-width":250,"link_list":"footer"}}},"content_for_index":[]}}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "current": {
+    "header-background-color": "",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "logo": "shopify://shop_images/DRESS-TO-KILL-LOGO-05_1600x_59ec7225-cac3-4cfb-8173-736effe71f5f.jpg",
+          "logo-width": 250,
+          "link_list": "footer"
+        }
+      }
+    },
+    "content_for_index": [
+
+    ]
+  }
+}
