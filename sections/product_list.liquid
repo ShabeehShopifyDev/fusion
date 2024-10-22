@@ -5,7 +5,7 @@
       <div class="product">
         <div class="prodct-img">
           <a href="{{ product.url }}">
-           <img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.title }}">
+            <img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.title }}">
           </a>
         </div>
         <div class="product-info">
@@ -15,12 +15,15 @@
           <p>{{ product.price | money }}</p>
         </div>
         {% form 'product', product %}
-          <input type="hidden" value="{{product.variants.first.id}}">
+          <!-- Variant ID must be passed with name="id" -->
+          <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+
           <div class="quntity-selector">
             <button class="quantity-plus" type="button">+</button>
-           <input class ="quantity-selector" type="number" id="quantity" min="1" value="1" disabled >
-           <button class="quantity-minus" type="button">-</button>
-           </div>
+            <input class="quantity-selector" type="number" name="quantity" id="quantity" min="1" value="1">
+            <button class="quantity-minus" type="button">-</button>
+          </div>
+
           <button type="submit">Add to cart</button>
         {% endform %}
       </div>

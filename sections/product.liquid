@@ -1,6 +1,6 @@
  <div class="product_section">
     {%  form 'product',product %}  
-      <input type="hidden" id="product-id" value="{{ product.variants.first.id }}" >
+      <input type="hidden" name="id" value="{{ product.variants.first.id }}">
       <div class="product">
         <div class="product_image">
           <img src="{{ product.featured_image |  product_img_url:'master' }}" >
