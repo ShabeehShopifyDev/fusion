@@ -1,6 +1,6 @@
  <div class="product_section">
     {%  form 'product',product %}  
-      <input type="hidden" id="product-id" value="{{ product.selected_or_first_available_variant.id }}" >
+      <input type="hidden" id="product-id" value="{{ product.variants.first.id }}" >
       <div class="product">
         <div class="product_image">
           <img src="{{ product.featured_image |  product_img_url:'master' }}" >
@@ -12,6 +12,26 @@
           <p class="price">
             {{ product.price | money }}
           </p>
+          {% if product.variants.size > 1 %}
+            <div class="product-option">
+            {% for option in product.options_with_values %}
+              <div class="option-name" >
+                <p>{{ option.name }}</p>
+                {% for value in option.values %}
+                  <input type="radio"
+                   {% if option.selected_value == value %}
+                    checked
+                   {% endif %}
+                   name="{{ option.name }}"
+                   value="{{ value }}"
+                   id="{{ option.name }}-{{ value }}"
+                  >
+                  <label for="{{ option.name }}-{{ value }}">{{ value }}</label>
+                {% endfor %}
+                </div>
+            {% endfor %}
+            </div>
+          {% endif %}
           <div class="quntity-selector">
            <button class="quantity-plus" type="button">+</button>
           <input class ="quantity-selector" type="number" id="quantity" min="1" value="1" disabled >
@@ -23,6 +43,18 @@
     {% endform %}
 </div>
 <script>
+
+
+document.querySelectorAll('.product-option input[type="radio"]').forEach((radio) => {
+  radio.addEventListener("change", () => {
+    let selectedOptions = [];
+
+    document.querySelectorAll('.product-option input[type="radio"]:checked').forEach((checkedRadio) => {
+      selectedOptions.push(checkedRadio.value);
+    });
+    console.log(selectedOptions);
+  });
+});
 
   //Quantity Selector
   document.querySelectorAll(".quantity-plus").forEach((plus) => {

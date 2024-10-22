@@ -15,6 +15,7 @@
           <p>{{ product.price | money }}</p>
         </div>
         {% form 'product', product %}
+          <input type="hidden" value="{{product.variants.first.id}}">
           <div class="quntity-selector">
             <button class="quantity-plus" type="button">+</button>
            <input class ="quantity-selector" type="number" id="quantity" min="1" value="1" disabled >
