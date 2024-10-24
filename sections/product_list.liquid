@@ -18,12 +18,8 @@
           <!-- Variant ID must be passed with name="id" -->
           <input type="hidden" name="id" value="{{ product.variants.first.id }}">
 
-          <div class="quntity-selector">
-            <button class="quantity-plus" type="button">+</button>
-            <input class="quantity-selector" type="number" name="quantity" id="quantity" min="1" value="1">
-            <button class="quantity-minus" type="button">-</button>
-          </div>
-
+          {% render 'quantity_selector' %}
+          
           <button type="submit">Add to cart</button>
         {% endform %}
       </div>
