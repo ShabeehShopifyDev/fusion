@@ -16,7 +16,7 @@
         "settings": {
           "logo": "shopify://shop_images/DRESS-TO-KILL-LOGO-05_1600x_59ec7225-cac3-4cfb-8173-736effe71f5f.jpg",
           "logo-width": 250,
-          "link_list": "footer"
+          "link_list": "main-menu"
         }
       }
     },
