@@ -18,6 +18,7 @@ document.querySelectorAll('.product-option input[type="radio"]').forEach(radio =
         // Call the function to update with variant id 
         updateUrlWithVariant(matchedVariant.id);
         priceUpdate();
+        imageUpdate();
     });
 });
 
@@ -34,6 +35,21 @@ function priceUpdate() {
     let priceWithoutDiscount = matchedVariant.price / 100;
     document.querySelector(".product-info .price span").textContent = priceWithoutDiscount.toFixed(2);
 }
+
+
+function imageUpdate() {
+    if (matchedVariant && matchedVariant.featured_image) {
+        document.querySelector(".main_product-media .product_main-item img").setAttribute("src", matchedVariant.featured_image.src);
+    }
+}
+
+
+
+
+
+
+
+
 
 // Quantity Selector
 let quantityInputs = document.querySelectorAll(".quantity-selector");

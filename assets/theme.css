@@ -211,32 +211,6 @@ ol.flickity-page-dots {
   display:none;
 }
 
-
-.product-info .quantity-selector {
-  border: 1px solid #000;
-  width: 100px;
-  margin-top:10px;
-}
-
-.product-info .quantity-selector #quantity {
-  border-width: 0 1px;
-  border-style: solid;
-  border-color: #000;
-  padding: 5px;
-  text-align: end;
-  width: 50px;
-  margin: 0;
-}
-
-.product-info .quantity-selector button {
-  border: none;
-  padding: 5px 7px;
-  text-align: center;
-  width: 21px;
-  cursor: pointer;
-}
-
-
 .quantity-selector {
   border: 1px solid #000;
   width: 100px;
