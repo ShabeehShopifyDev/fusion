@@ -1,15 +1,23 @@
 <div class="product_section">
   {% form 'product', product %}
     <input id="product-id" type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-    <div class="product">
+    <div class="product container">
       <div class="product_image">
 
-      {% if product.selected_or_first_available_variant %}
-        <img src="{{ product.selected_or_first_available_variant | img_url: 'master' }}" alt="{{ product.selected_or_first_available_variant.title | escape }}">
-      {% else %}
-        <img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.title | escape }}">
-      {% endif %}
-      
+     <div class="main_product-media" data-flickity>
+      {% for image in product.images %}
+        <div class="product_main-item">
+          <img src="{{ image |  product_img_url : 'master'  }}">
+        </div>        
+      {% endfor %}
+     </div>
+      <div class="media_nav" data-flickity='{ "asNavFor": ".main_product-media", "contain": true, "pageDots": false , "prevNextButtons": false , "draggable": true }'>
+        {% for image in product.images %}
+          <div class="product_nav-item">
+            <img src="{{ image |  product_img_url: 'master'  }}">
+          </div>        
+        {% endfor %}
+      </div>
       </div>
       <div class="product-info">
         <h2 class="title">{{ product.title }}</h2>
@@ -23,7 +31,7 @@
           <div class="product-option">
             {% for option in product.options_with_values %}
               <div class="option-name">
-                <p>{{ option.name }}</p>
+                <p>{{ option.name }} :</p>
                 {% for value in option.values %}
                   <input type="radio"
                          {% if option.selected_value == value %}
@@ -38,13 +46,9 @@
             {% endfor %}
           </div>
         {% endif %}
-        <div class="quantity-selector">
-          <button class="quantity-plus" type="button">+</button>
-          <input class="quantity" name="quantity" type="number" id="quantity" min="1" value="1" >
-          <button class="quantity-minus" type="button">-</button>
-        </div>
+        {%  render 'quantity_selector' %}
+        <button type="submit">Add to cart</button>
       </div>
-      <button type="submit">Add to cart</button>
     </div>
   {% endform %}
 </div>
