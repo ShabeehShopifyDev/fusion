@@ -14,6 +14,11 @@
               <h3>{{ item.title }}</h3>
             </a>
             <p>{{ item.price | money }}</p>
+            <div class="quantity-selector">
+              <button class="quantity-minus" type="button">-</button>
+               <input type="number" name="quantity" class="quantity" id="quantity" value="{{ item.quantity }}" min="1" readonly>
+              <button class="quantity-plus" type="button">+</button>
+          </div>
           </div>
         </div>
       {% endfor %}
