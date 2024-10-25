@@ -260,4 +260,8 @@ ol.flickity-page-dots {
   width: 21px;
   cursor: pointer;
 }
+.product-info .product-option .option-name input[type="radio"]:checked + label {
+  background: #000;
+  color:#fff;
+}
 
