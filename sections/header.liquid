@@ -104,7 +104,33 @@ Search Results Section
     </div>
   </div>
 </div>
+<script>
+ const searchInput = document.querySelector('.search-input');
+const searchResultsContainer = document.querySelector('.search-results');
 
+searchInput.addEventListener('input', function () {
+  const query = searchInput.value.trim();
+
+  if (query.length < 3) {
+    searchResultsContainer.innerHTML = '';
+    return;
+  }
+
+  // Fetch the updated section with the search query
+  fetch(`/search?section_id=search-results&q=${encodeURIComponent(query)}`)
+    .then((response) => response.text())
+    .then((html) => {
+      // Parse the HTML and update the search results container
+      const parser = new DOMParser();
+      const newDoc = parser.parseFromString(html, 'text/html');
+      const newContent = newDoc.querySelector('.search-results').innerHTML;
+
+      searchResultsContainer.innerHTML = newContent;
+    })
+    .catch((error) => console.error('Error refreshing search section:', error));
+});
+
+</script>
 {% schema %}
 {
   "name": "header",
