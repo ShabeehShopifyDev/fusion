@@ -104,8 +104,8 @@
   let cartData = await newCart.text();
   let tempDiv = document.createElement("div");
   tempDiv.innerHTML = cartData;
-  let newBox = tempDiv.querySelector(".cart-wrapper").innerHTML;
-  document.querySelector(".cart-wrapper").innerHTML = newBox;
+  let newBox = tempDiv.querySelector(".search-results").innerHTML;
+  document.querySelector(".search-results").innerHTML = newBox;
 }
 
   const searchInput = document.querySelector('.search-input');
