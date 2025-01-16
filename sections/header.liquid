@@ -99,7 +99,7 @@
   </div>
 </div>
 <script>
- async function updateCartDrawer() {
+ async function updateHeader() {
   let newCart = await fetch("/?section_id=header");
   let cartData = await newCart.text();
   let tempDiv = document.createElement("div");
@@ -107,6 +107,14 @@
   let newBox = tempDiv.querySelector(".cart-wrapper").innerHTML;
   document.querySelector(".cart-wrapper").innerHTML = newBox;
 }
+
+  const searchInput = document.querySelector('.search-input');
+
+  searchInput.addEventListener('input', (event) => {
+    const inputValue = event.target.value;
+    updateHeader();
+  });
+  
 </script>
 {% schema %}
 {
