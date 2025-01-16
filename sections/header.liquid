@@ -99,22 +99,47 @@
   </div>
 </div>
 <script>
- async function updateHeader() {
-  let newCart = await fetch("/?section_id=header");
-  let cartData = await newCart.text();
-  let tempDiv = document.createElement("div");
-  tempDiv.innerHTML = cartData;
-  let newBox = tempDiv.querySelector(".search-results").innerHTML;
-  document.querySelector(".search-results").innerHTML = newBox;
+async function updateHeader() {
+  try {
+    let newCart = await fetch("/?section_id=header");
+    if (!newCart.ok) throw new Error("Network response was not ok");
+    let cartData = await newCart.text();
+    let tempDiv = document.createElement("div");
+    tempDiv.innerHTML = cartData;
+
+    let newBox = tempDiv.querySelector(".search-results");
+    if (newBox) {
+      document.querySelector(".search-results").innerHTML = newBox.innerHTML;
+    } else {
+      console.error("No '.search-results' element found in fetched content.");
+    }
+  } catch (error) {
+    console.error("Error updating header:", error);
+  }
 }
 
-  const searchInput = document.querySelector('.search-input');
+// Debounce function to limit calls to `updateHeader`
+function debounce(func, delay) {
+  let timer;
+  return function (...args) {
+    clearTimeout(timer);
+    timer = setTimeout(() => func.apply(this, args), delay);
+  };
+}
 
-  searchInput.addEventListener('input', (event) => {
-    const inputValue = event.target.value;
-    updateHeader();
-  });
-  
+const searchInput = document.querySelector('.search-input');
+
+if (searchInput) {
+  searchInput.addEventListener(
+    'input',
+    debounce((event) => {
+      const inputValue = event.target.value;
+      updateHeader();
+    }, 300) // Debounce delay (300ms)
+  );
+} else {
+  console.error("Search input not found.");
+} 
 </script>
 {% schema %}
 {
