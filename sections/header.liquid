@@ -73,26 +73,20 @@
     </div>
     <div class="search-container">
       <input type="search" class="search-input" placeholder="Search products...">
-      <div class="search-results"></div>
+      <div class="search-results">
+      {% if search.results_count > 0 %}
+        {% for product in search.results %}
+          <div class="result-item">
+            <a href="{{ product.url }}">
+              <img src="{{ product.featured_image | img_url: '100x100' }}" alt="{{ product.title }}">
+              <span>{{ product.title }}</span>
+            </a>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p>No products found.</p>
+      {% endif %}
     </div>
-    {% comment %}
-Search Results Section
-{% endcomment %}
-<div class="search-results">
-  {% if search.results_count > 0 %}
-    {% for product in search.results %}
-      <div class="result-item">
-        <a href="{{ product.url }}">
-          <img src="{{ product.featured_image | img_url: '100x100' }}" alt="{{ product.title }}">
-          <span>{{ product.title }}</span>
-        </a>
-      </div>
-    {% endfor %}
-  {% else %}
-    <p>No products found.</p>
-  {% endif %}
-</div>
-
     <div class="icon-menu">
       <a href="#" class="fav-icon">{% render 'icon', name: 'fav' %}</a>
       <a href="#" class="search-icon">{% render 'icon', name: 'search' %}</a>
@@ -105,31 +99,14 @@ Search Results Section
   </div>
 </div>
 <script>
- const searchInput = document.querySelector('.search-input');
-const searchResultsContainer = document.querySelector('.search-results');
-
-searchInput.addEventListener('input', function () {
-  const query = searchInput.value.trim();
-
-  if (query.length < 3) {
-    searchResultsContainer.innerHTML = '';
-    return;
-  }
-
-  // Fetch the updated section with the search query
-  fetch(`/search?section_id=search-results&q=${encodeURIComponent(query)}`)
-    .then((response) => response.text())
-    .then((html) => {
-      // Parse the HTML and update the search results container
-      const parser = new DOMParser();
-      const newDoc = parser.parseFromString(html, 'text/html');
-      const newContent = newDoc.querySelector('.search-results').innerHTML;
-
-      searchResultsContainer.innerHTML = newContent;
-    })
-    .catch((error) => console.error('Error refreshing search section:', error));
-});
-
+ async function updateCartDrawer() {
+  let newCart = await fetch("/?section_id=header");
+  let cartData = await newCart.text();
+  let tempDiv = document.createElement("div");
+  tempDiv.innerHTML = cartData;
+  let newBox = tempDiv.querySelector(".cart-wrapper").innerHTML;
+  document.querySelector(".cart-wrapper").innerHTML = newBox;
+}
 </script>
 {% schema %}
 {
