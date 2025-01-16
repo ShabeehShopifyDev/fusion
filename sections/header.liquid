@@ -75,6 +75,24 @@
       <input type="search" class="search-input" placeholder="Search products...">
       <div class="search-results"></div>
     </div>
+    {% comment %}
+Search Results Section
+{% endcomment %}
+<div class="search-results">
+  {% if search.results_count > 0 %}
+    {% for product in search.results %}
+      <div class="result-item">
+        <a href="{{ product.url }}">
+          <img src="{{ product.featured_image | img_url: '100x100' }}" alt="{{ product.title }}">
+          <span>{{ product.title }}</span>
+        </a>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>No products found.</p>
+  {% endif %}
+</div>
+
     <div class="icon-menu">
       <a href="#" class="fav-icon">{% render 'icon', name: 'fav' %}</a>
       <a href="#" class="search-icon">{% render 'icon', name: 'search' %}</a>
