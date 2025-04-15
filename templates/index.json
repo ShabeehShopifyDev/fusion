@@ -11,13 +11,12 @@
   "sections": {
     "collection_DbptYG": {
       "type": "collection",
-      "settings": {
-      }
+      "settings": {}
     },
     "product_list_EPkGMB": {
       "type": "product_list",
       "settings": {
-        "collection": "assessories"
+        "collection": "new-collection"
       }
     }
   },
