@@ -41,6 +41,7 @@
         <div id="predictive-search" tabindex="-1"></div>
       </form>
     </predictive-search>
+    
     {%- if predictive_search.performed -%}
       <div id="predictive-search-results">
         {%- if predictive_search.resources.products.size > 0 -%}
@@ -63,6 +64,7 @@
         </button>
       </div>
     {%- endif -%}
+    
     <div class="icon-menue">
       <a href="#" class="fav-icon">
         {% render 'icon' , name: 'fav' %}
