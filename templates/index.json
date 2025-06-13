@@ -9,17 +9,42 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "product",
-      "settings": {}
-    },
-    "collection_DbptYG": {
-      "type": "collection",
-      "settings": {}
+    "banner_aLURcA": {
+      "type": "banner",
+      "blocks": {
+        "heading_fzEtGf": {
+          "type": "heading",
+          "settings": {
+            "heading": "Welcome to Our Store"
+          }
+        },
+        "text_VrFhtK": {
+          "type": "text",
+          "settings": {
+            "text": "Check out our latest collection."
+          }
+        },
+        "button_WNk4MT": {
+          "type": "button",
+          "settings": {
+            "botton_label": "Shop Now",
+            "link": "/collections/all"
+          }
+        }
+      },
+      "block_order": [
+        "heading_fzEtGf",
+        "text_VrFhtK",
+        "button_WNk4MT"
+      ],
+      "name": "Banner & Overlay",
+      "settings": {
+        "banner_image": "shopify://shop_images/blue-armchair-against-blue-wall-living-room-interior-elegant-interior-design-with-copy-space-ai-generative.jpg",
+        "content-position": "center"
+      }
     }
   },
   "order": [
-    "main",
-    "collection_DbptYG"
+    "banner_aLURcA"
   ]
 }
