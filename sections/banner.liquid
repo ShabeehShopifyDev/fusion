@@ -1,37 +1,31 @@
 {% stylesheet %}
 .banner-overlay {
-  position: relative;
-  overflow: hidden;
+    position: relative;
 }
-
-.banner-overlay__image img {
-  width: 100%;
-  display: block;
-  object-fit: cover;
-}
-
 .banner-overlay__content {
-  position: absolute;
-  text-align: center;
-  color: white;
-  padding: 2rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
 }
 
 .banner-overlay__content.center {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+    align-items: center;
+    justify-content: center;
 }
-
+  
 .banner-overlay__content.bottom-center {
-  bottom: 10%;
-  left: 50%;
-  transform: translateX(-50%);
+    justify-content: flex-end;
+    align-content: center;
 }
 
 .banner-overlay__content.bottom-left {
-  bottom: 10%;
-  left: 5%;
+  justify-content: flex-end;
+  align-content: left;
 }
 
 .banner-overlay__button {
