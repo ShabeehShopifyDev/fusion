@@ -15,13 +15,7 @@
         "heading_fzEtGf": {
           "type": "heading",
           "settings": {
-            "heading": "Welcome to Our Store"
-          }
-        },
-        "text_VrFhtK": {
-          "type": "text",
-          "settings": {
-            "text": "Check out our latest collection."
+            "heading": "Make a Room To Sit Down A While"
           }
         },
         "button_WNk4MT": {
@@ -34,10 +28,8 @@
       },
       "block_order": [
         "heading_fzEtGf",
-        "text_VrFhtK",
         "button_WNk4MT"
       ],
-      "name": "Banner & Overlay",
       "settings": {
         "banner_image": "shopify://shop_images/blue-armchair-against-blue-wall-living-room-interior-elegant-interior-design-with-copy-space-ai-generative.jpg",
         "content-position": "center"
