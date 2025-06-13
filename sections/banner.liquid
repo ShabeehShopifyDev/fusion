@@ -1,0 +1,174 @@
+{% stylesheet %}
+.banner-overlay {
+  position: relative;
+  overflow: hidden;
+}
+
+.banner-overlay__image img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.banner-overlay__content {
+  position: absolute;
+  text-align: center;
+  color: white;
+  padding: 2rem;
+}
+
+.banner-overlay__content.center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.banner-overlay__content.bottom-center {
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.banner-overlay__content.bottom-left {
+  bottom: 10%;
+  left: 5%;
+}
+
+.banner-overlay__button {
+  background-color: #000;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  text-decoration: none;
+  margin-top: 1rem;
+}
+{% endstylesheet %}
+
+<div class="banner-overlay">
+  {% if section.settings.banner_image != blank %}
+    <div class="banner-overlay__image">
+      <img src="{{ section.settings.banner_image | image_url: width: 1600 }}" alt="Banner Image" loading="lazy">
+    </div>
+  {% endif %}
+
+  <div class="banner-overlay__content {{ section.settings.content-position }}">
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'heading' %}
+          {% if block.settings.heading != blank %}
+            <h2>{{ block.settings.heading }}</h2>
+          {% endif %}
+        {% when 'text' %}
+          {% if block.settings.text != blank %}
+            <p>{{ block.settings.text }}</p>
+          {% endif %}
+        {% when 'button' %}
+          {% if block.settings.botton_label != blank and block.settings.link != blank %}
+            <a href="{{ block.settings.link }}" class="banner-overlay__button">
+              {{ block.settings.botton_label }}
+            </a>
+          {% endif %}
+      {% endcase %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "tag": "section",
+  "name": "Banner & Overlay",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Banner Image"
+    },
+    {
+      "type": "select",
+      "id": "content-position",
+      "label": "Content Position",
+      "default": "center",
+      "options": [
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "label": "Bottom Center",
+          "value": "bottom-center"
+        },
+        {
+          "value": "bottom-left",
+          "label": "Bottom Left"
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "botton_label",
+          "label": "Button Label"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner & Overlay",
+      "blocks": [
+        {
+          "type": "heading",
+          "settings": {
+            "heading": "Welcome to Our Store"
+          }
+        },
+        {
+          "type": "text",
+          "settings": {
+            "text": "Check out our latest collection."
+          }
+        },
+        {
+          "type": "button",
+          "settings": {
+            "botton_label": "Shop Now",
+            "link": "/collections/all"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

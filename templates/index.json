@@ -9,19 +9,17 @@
  */
 {
   "sections": {
+    "main": {
+      "type": "product",
+      "settings": {}
+    },
     "collection_DbptYG": {
       "type": "collection",
       "settings": {}
-    },
-    "product_list_EPkGMB": {
-      "type": "product_list",
-      "settings": {
-        "collection": "new-collection"
-      }
     }
   },
   "order": [
-    "collection_DbptYG",
-    "product_list_EPkGMB"
+    "main",
+    "collection_DbptYG"
   ]
 }

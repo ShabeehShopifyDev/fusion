@@ -2,15 +2,9 @@
 <head>
     {{ content_for_header }}
     {% section 'header' %}
-    {% comment %} Flickity Slider {% endcomment %}
-    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <link href="{{ 'theme.css' | asset_url }}" rel="stylesheet">
 </head>
 <body>
-    <input id="moneysymbol" type="hidden" value = "{{ cart.currency.symbol }}">
     {{ content_for_layout }}
-    <script src="{{ 'flickity_slider.js' | asset_url }}" defer="defer"></script>
-    <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
-    <link href="{{ 'theme.css' | asset_url }}" rel="stylesheet">
 </body>
 </html>

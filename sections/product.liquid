@@ -1,70 +1,13 @@
-<div class="product_section">
-  {% form 'product', product %}
-    <input id="product-id" type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-    <div class="product container">
-      <div class="product_image">
-
-     <div class="main_product-media" data-flickity>
-      {% for image in product.images %}
-        <div class="product_main-item">
-          <img src="{{ image |  product_img_url : 'master'  }}">
-        </div>        
-      {% endfor %}
-     </div>
-      <div class="media_nav" data-flickity='{ "asNavFor": ".main_product-media", "contain": true, "pageDots": false , "prevNextButtons": false , "draggable": true }'>
-        {% for image in product.images %}
-          <div class="product_nav-item">
-            <img src="{{ image |  product_img_url: 'master'  }}">
-          </div>        
-        {% endfor %}
-      </div>
-      </div>
-      <div class="product-info">
-        <h2 class="title">{{ product.title }}</h2>
-        <p class="price">
-          {{ cart.currency.symbol }}
-          <span>
-           {{ product.price | money_without_currency }}
-          </span>
-        </p>
-        {% if product.variants.size > 1 %}
-          <div class="product-option">
-            {% for option in product.options_with_values %}
-              <div class="option-name">
-                <p>{{ option.name }} :</p>
-                {% for value in option.values %}
-                  <input type="radio"
-                         {% if option.selected_value == value %}
-                         checked
-                         {% endif %}
-                         name="{{ option.name }}"
-                         value="{{ value }}"
-                         id="{{ option.name }}-{{ value }}">
-                  <label for="{{ option.name }}-{{ value }}">{{ value }}</label>
-                {% endfor %}
-              </div>
-            {% endfor %}
-          </div>
-        {% endif %}
-        {%  render 'quantity_selector' %}
-        <button type="submit">Add to cart</button>
-      </div>
-    </div>
-  {% endform %}
-</div>
-
-<script>
-  var product = {{ product | json }};
-</script>
+<h1>Hi i am product section</h1>
 
 {% schema %}
-{
-  "name": "Section name",
-  "settings": [],
-  "presets": [
-    {
-      "name": "Product"
-    }
-  ]
-}
+  {
+    "name": "Section name",
+    "settings": [],
+    "presets": [
+      {
+        "name": "Product",
+      }
+    ]
+  }
 {% endschema %}
