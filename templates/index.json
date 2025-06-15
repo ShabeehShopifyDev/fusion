@@ -34,9 +34,20 @@
         "banner_image": "shopify://shop_images/blue-armchair-against-blue-wall-living-room-interior-elegant-interior-design-with-copy-space-ai-generative.jpg",
         "content-position": "center"
       }
+    },
+    "collection_hUNqrT": {
+      "type": "collection",
+      "name": "Featured Collection",
+      "settings": {
+        "collection": "",
+        "number_of_products": 6,
+        "n_of_products_row": 4,
+        "n_of_products_row_mobile": 2
+      }
     }
   },
   "order": [
-    "banner_aLURcA"
+    "banner_aLURcA",
+    "collection_hUNqrT"
   ]
 }
