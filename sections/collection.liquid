@@ -16,7 +16,7 @@
 }
 
 .product-card {
-  flex: 0 0 calc(100% / {{ section.settings.number_of_products }});
+  flex: 0 0 calc(100% / var(--products-per-row));
 }
 
 .product-card img {
@@ -25,11 +25,11 @@
 
 @media screen and (max-width: 991px) {
   .product-card {
-    flex: 0 0 calc(100%/{{ section.settings.n_of_products_row_mobile }});
+    flex: 0 0 calc(100%/var(--products-per-row-mobile));
   }
 }
-
 </style>
+
 <div class="featured_collection">
   {%- liquid
     assign collection = section.settings.collection
@@ -45,9 +45,9 @@
       <h2>{{ collection.title }}</h2>
     </div>
 
-    <div class="collection-products has__flex has__flex-wrap">
+    <div class="collection-products" style="--products-per-row: {{ section.settings.n_of_products_row }}; --products-per-row-mobile: {{ section.settings.n_of_products_row_mobile }};">
       {%- for product in collection.products limit: number_of_products -%}
-        <div class="product-card has__one-third">
+        <div class="product-card">
           <a href="{{ product.url }}">
             {%- if product.featured_image -%}
               <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}" loading="lazy">
@@ -64,9 +64,9 @@
     <div class="collection-header">
       <h2>Example Products</h2>
     </div>
-    <div class="collection-products has__flex has__flex-wrap">
+    <div class="collection-products" style="--products-per-row: {{ section.settings.n_of_products_row }}; --products-per-row-mobile: {{ section.settings.n_of_products_row_mobile }};">
       {%- for i in (1..6) -%}
-        <div class="product-card has__one-third">
+        <div class="product-card">
           <a href="#">
             {{ 'product-' | append: i | placeholder_svg_tag }}
             <h3 class="title">Example Product {{ i }}</h3>
