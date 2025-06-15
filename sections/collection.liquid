@@ -37,16 +37,16 @@
     assign number_of_products = section.settings.number_of_products
   -%}
 
-  {%- if collection and collection.products_count > 0 -%}
     <div class="collection-header">
       {%- if collection_image != blank -%}
         <img src="{{ collection_image | image_url: width: 800 }}" alt="{{ collection.title }}" loading="lazy">
       {%- endif -%}
-      <h2>{{ collection.title }}</h2>
+      <h2>{{ collection.title | default: "Example Collection" }}</h2>
     </div>
 
     <div class="collection-products" style="--products-per-row: {{ section.settings.n_of_products_row }}; --products-per-row-mobile: {{ section.settings.n_of_products_row_mobile }};">
-      {%- for product in collection.products limit: number_of_products -%}
+     {% if collection != blank %}
+       {%- for product in collection.products limit: number_of_products -%}
         <div class="product-card">
           <a href="{{ product.url }}">
             {%- if product.featured_image -%}
@@ -59,23 +59,18 @@
           </a>
         </div>
       {%- endfor -%}
+     {% else %}
+       {%- for i in (1..6) -%}
+          <div class="product-card">
+            <a href="#">
+              {{ 'product-' | append: i | placeholder_svg_tag }}
+              <h3 class="title">Example Product {{ i }}</h3>
+              <p class="price">$19.99</p>
+            </a>
+          </div>
+        {%- endfor -%}
+     {% endif %}
     </div>
-  {%- else -%}
-    <div class="collection-header">
-      <h2>Example Products</h2>
-    </div>
-    <div class="collection-products" style="--products-per-row: {{ section.settings.n_of_products_row }}; --products-per-row-mobile: {{ section.settings.n_of_products_row_mobile }};">
-      {%- for i in (1..6) -%}
-        <div class="product-card">
-          <a href="#">
-            {{ 'product-' | append: i | placeholder_svg_tag }}
-            <h3 class="title">Example Product {{ i }}</h3>
-            <p class="price">$19.99</p>
-          </a>
-        </div>
-      {%- endfor -%}
-    </div>
-  {%- endif -%}
 </div>
 
 {% schema %}
