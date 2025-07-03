@@ -69,7 +69,7 @@
   document.querySelectorAll('.quantity-selector button').forEach(qtyAdjust =>{
     qtyAdjust.addEventListener('click',()=> {
       console.log("Click Qty")
-      if;(qtyAdjust.classList.contains('qty-plus')){
+      if(qtyAdjust.classList.contains('qty-plus')){
         quantity++;
         document.querySelector('#quantity-input').value = quantity;
       }else{
