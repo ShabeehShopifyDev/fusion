@@ -42,6 +42,7 @@
 </div>
 
 <script>
+  let product = {{ product | json }};
   document.querySelectorAll('.product-info .varinat-options input[type="radio"]').forEach(radio =>{
     radio.addEventListener('change',()=>{
       let selectedOptions = [];
@@ -49,7 +50,18 @@
         selectedOptions.push(cRadio.value);
       })
        console.log(selectedOptions);
-      let matchedVariant = selectedOptions.toString().replace(",","/");
+      let matchedOption = selectedOptions.toString().replace(",","/");
+      let matchedVariant;
+      
+      for (let variant of product.variants) {
+        if (matchedOption === variant.title) {
+          matchedVariant = variant;
+          break;
+        }
+      }
+
+      console.log(`matched variant ${matchedVariant}`);
+      
     })
   });
 </script>
