@@ -49,9 +49,9 @@
       document.querySelectorAll('.product-info .varinat-options input[type="radio"]:checked').forEach(cRadio =>{
         selectedOptions.push(cRadio.value);
       })
-       console.log(selectedOptions);
       let matchedOption = selectedOptions.toString().replace(",","/");
       let matchedVariant;
+     console.log(matchedOption);
       
       for (let variant of product.variants) {
         if (matchedOption === variant.title) {
