@@ -27,6 +27,7 @@
     </div>
     <div class="varinat-options" >
       {% form 'product', product %}
+        <input type="hidden" id="variant-id" value="{{ product.selected_or_first_available_variant.id }}" name="id" >
          {% for option in product.options_with_values %}
            <h3>{{ option.name }}</h3>
           {% for value in option.values %}
@@ -34,10 +35,13 @@
              <label for="{{ value.id }}" >{{ value }}</label>
           {% endfor %}
          {% endfor %}
+        <button>Submit</button>
       {% endform %}
     </div>
   </div> 
 </div>
+
+
 
 {% schema %}
   {
