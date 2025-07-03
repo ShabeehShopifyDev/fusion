@@ -42,7 +42,7 @@
 </div>
 
 <script>
-  let product = {{ product | json }};
+  var product = {{ product | json }};
   document.querySelectorAll('.product-info .varinat-options input[type="radio"]').forEach(radio =>{
     radio.addEventListener('change',()=>{
       let selectedOptions = [];
