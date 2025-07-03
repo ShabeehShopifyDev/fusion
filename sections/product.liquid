@@ -50,15 +50,7 @@
         selectedOptions.push(cRadio.value);
       })
       let matchedOption = selectedOptions.toString().replace(","," / ");
-      let matchedVariant;
-     console.log(matchedOption);
-      
-      for (let variant of product.variants) {
-        if (matchedOption === variant.title) {
-          matchedVariant = variant;
-          break;
-        }
-      }
+      let matchedVariant = product.varints.find(variant => variant.title === matchedOption );
 
       console.log(product);
       console.log(matchedVariant);
