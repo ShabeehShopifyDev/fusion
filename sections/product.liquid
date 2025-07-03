@@ -30,7 +30,8 @@
          {% for option in product.options_with_values %}
            <h3>{{ option.name }}</h3>
           {% for value in option.values %}
-             <p>{{ value }}</p>
+             <input type="radio" id="{{ value.id }}" value="{{ value.id }}" name="{{ option.name }}" {% if option.selected_value == value %}checked{% endif %}>
+             <label for="{{ value.id }}" >{{ value }}</label>
           {% endfor %}
          {% endfor %}
       {% endform %}
