@@ -65,7 +65,7 @@
 
   let quantity = Number(document.querySelector('#quantity-input').value);  
   document.querySelectorAll('.quantity-selector button').forEach(qtyAdjust =>{
-    qtyAdjust.addEventListener('click',()=> {s
+    qtyAdjust.addEventListener('click',()=> {
       if(qtyAdjust.classList.contains('qty-plus')){
         quantity++;
         document.querySelector('#quantity-input').value = quantity;
