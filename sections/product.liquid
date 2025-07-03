@@ -1,3 +1,20 @@
+{% style %}
+  .product {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 0 60px;
+  }
+  
+  .product .gallery {
+      flex: 0 0 50%;
+  }
+  
+  .product .product-info {
+      flex: 0 0 50%;
+      padding-left: 30px;
+  }
+{% endstyle %}
+
 <div class="product" >
   <div class="gallery" >
     <img src="{{ product.featured_image | image_url: width: 500, height: 500  }}" >
