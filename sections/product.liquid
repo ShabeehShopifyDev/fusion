@@ -63,9 +63,7 @@
     })
   });
 
-  let quantity = Number(document.querySelector('#quantity-input').value);
-  console.log(quantity);
-  
+  let quantity = Number(document.querySelector('#quantity-input').value);  
   document.querySelectorAll('.quantity-selector button').forEach(qtyAdjust =>{
     qtyAdjust.addEventListener('click',()=> {
       console.log("Click Qty")
@@ -76,7 +74,6 @@
         quantity--
         document.querySelector('#quantity-input').value = quantity;
       }
-      console.log(quantity);
     })
   })
 </script>
