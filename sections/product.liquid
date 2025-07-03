@@ -43,7 +43,7 @@
 
 <script>
   document.querySelectorAll('.product-info .varinat-options input[type="radio"]').forEach(radio =>{
-    radio.addEventListner('change',()=>{
+    radio.addEventListener('change',()=>{
       let selectedOptions = [];
       document.querySelectorAll('.product-info .varinat-options input[type="radio"]:checked').forEach(cRadio =>{
         selectedOptions.puch(cRadio.value);
