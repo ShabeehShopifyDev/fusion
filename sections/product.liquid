@@ -63,7 +63,7 @@
     })
   });
 
-  let quantity = document.querySelector('#quantity-input').value.toNumber();
+  let quantity = Number(document.querySelector('#quantity-input').value);
   console.log(quantity);
   
   document.querySelectorAll('.quantity-selector button').forEach(qtyAdjust =>{
