@@ -2,11 +2,28 @@
   <div class="gallery" >
     <img src="{{ product.featured_image | image_url: width: 500, height: 500  }}" >
   </div>
+  <div class="product-info" >
+    <h2 class="product-title" >{{ product.title }}</h2>
+    <p>{{ product.price | money }}</p>
+    <div class="product-description" >
+      {{ product.description }}
+    </div>
+    <div class="varinat-options" >
+      {% form 'product', product %}
+         {% for option in product.options_with_values %}
+           <h3>{{ option.name }}</h3>
+          {% for value in option.values %}
+             <p>{{ value }}</p>
+          {% endfor %}
+         {% endfor %}
+      {% endform %}
+    </div>
+  </div> 
 </div>
 
 {% schema %}
   {
-    "name": "Section name",
+    "name": "Product",
     "settings": [],
     "presets": [
       {
