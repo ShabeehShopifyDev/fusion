@@ -70,8 +70,8 @@
       if(qtyAdjust.classList.contains('qty-plus')){
         quantity++;
         document.querySelector('#quantity-input').value = quantity;
-      }else{
-        quantity--
+      }else if(quantity !== 0){
+        quantity--;
         document.querySelector('#quantity-input').value = quantity;
       }
     })
