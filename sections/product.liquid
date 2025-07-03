@@ -35,12 +35,23 @@
              <label for="{{ value.id }}" >{{ value }}</label>
           {% endfor %}
          {% endfor %}
-        <button>Submit</button>
+        <button class="atc-button" >Submit</button>
       {% endform %}
     </div>
   </div> 
 </div>
 
+<script>
+  document.querySelectorAll('.product-info .varinat-options input[type="radio"]').forEach(radio =>{
+    radio.addEventListner('change',()=>{
+      let selectedOptions = [];
+      document.querySelectorAll('.product-info .varinat-options input[type="radio"]:checked').forEach(cRadio =>{
+        selectedOptions.puch(cRadio.value);
+      }
+       console.log(selectedOptions);
+    })
+  });
+</script>
 
 
 {% schema %}
