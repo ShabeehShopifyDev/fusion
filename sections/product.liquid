@@ -28,7 +28,12 @@
     <div class="varinat-options" >
       {% form 'product', product %}
         <input type="hidden" id="variant-id" value="{{ product.selected_or_first_available_variant.id }}" name="id" >
-         {% for option in product.options_with_values %}
+        <div class="quantity-selector" >
+           <button type="button" data-quantity="plus" class="qty-plus" >+</button>
+           <input type="number" value="1" id="quantity-input" readonly>
+           <button type="button" data-quantity="minus" class="qty-minus" >-</button>
+        </div> 
+        {% for option in product.options_with_values %}
            <h3>{{ option.name }}</h3>
           {% for value in option.values %}
              <input type="radio" id="{{ value.id }}" value="{{ value }}" name="{{ option.name }}" {% if option.selected_value == value %}checked{% endif %}>
@@ -44,7 +49,7 @@
 <script>
   var product = {{ product | json }};
   document.querySelectorAll('.product-info .varinat-options input[type="radio"]').forEach(radio =>{
-    radio.addEventListener('change',()=>{
+    radio.addEventListener('change',()=> {
       let selectedOptions = [];
       
       document.querySelectorAll('.product-info .varinat-options input[type="radio"]:checked').forEach(cRadio =>{
@@ -54,12 +59,18 @@
       let matchedOption = selectedOptions.toString().replace(","," / ");
       let matchedVariant = product.variants.find(variant => variant.title === matchedOption);
       
-      document.querySelector('.product-info .varinat-options #variant-id').value = matchedVariant.id; 
-      console.log(product);
-      console.log(matchedVariant);
-      
+      document.querySelector('.product-info .varinat-options #variant-id').value = matchedVariant.id;      
     })
   });
+
+  let quantity = document.querySelector('#').quantity-input.value.toNumber();
+  console.log(quantity);
+  
+  document.querySelectorAll('.quantity-selector button').forEach(qtyAdjust =>{
+    if(qtyAdjust.classList.contains('qty-plus')){
+       
+    }
+  })
 </script>
 
 
