@@ -46,12 +46,15 @@
   document.querySelectorAll('.product-info .varinat-options input[type="radio"]').forEach(radio =>{
     radio.addEventListener('change',()=>{
       let selectedOptions = [];
+      
       document.querySelectorAll('.product-info .varinat-options input[type="radio"]:checked').forEach(cRadio =>{
         selectedOptions.push(cRadio.value);
       })
+      
       let matchedOption = selectedOptions.toString().replace(","," / ");
       let matchedVariant = product.variants.find(variant => variant.title === matchedOption);
-
+      
+      document.querySelector('.product-info .varinat-options #variant-id').value = matchedVariant.id; 
       console.log(product);
       console.log(matchedVariant);
       
